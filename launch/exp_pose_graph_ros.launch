@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="rgbd-slam-tutor2-sophus" type="exp_pose_graph_ros" name="exp_pose_graph_ros" cwd="node" required="true" output="screen"> 
+  </node>
+</launch>

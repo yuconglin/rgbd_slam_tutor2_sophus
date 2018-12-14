@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<package>
+  <name>rgbd_slam_tutor2_sophus</name>
+  <version>0.1.0</version>
+  <description>
+    rgbdslam (v2) is a SLAM solution for RGB-D cameras. It provides the current pose of the camera and allows to  
+    create a registered point cloud or an octomap. 
+    
+    It features a GUI interface for easy usage, but can also be controlled by ROS service calls, e.g., when running on a robot.
+
+    For installation and usage instructions see the README file of <a href="https://github.com/felixendres/rgbdslam_v2">the github repository</a>. 
+  </description>
+  <license>GPLv3</license>
+  <maintainer email="endres@informatik.uni-freiburg.de">Felix Endres</maintainer>
+  <!-- The *_depend tags are used to specify dependencies -->
+  <!-- Dependencies can be catkin packages or system dependencies -->
+  <!-- Examples: -->
+  <!-- Use build_depend for packages you need at compile time: -->
+  <!--   <build_depend>message_generation</build_depend> -->
+  <!-- Use buildtool_depend for build tool packages: -->
+  <!--   <buildtool_depend>catkin</buildtool_depend> -->
+  <!-- Use run_depend for packages you need at runtime: -->
+  <!--   <run_depend>message_runtime</run_depend> -->
+  <!-- Use test_depend for packages you need only for testing: -->
+  <!--   <test_depend>gtest</test_depend> -->
+  <buildtool_depend>catkin</buildtool_depend> 
+  <build_depend>cmake_modules </build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <run_depend>cmake_modules</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <!-- own stuff -->
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- You can specify that this package is a metapackage here: -->
+    <!-- <metapackage/> -->
+
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>
+  <!--
+  <depend package="tf"/>
+  <depend package="pcl"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="rosbag"/>
+  <depend package="pcl_ros"/>
+  <depend package="cv_bridge"/>
+  <depend package="sensor_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="visualization_msgs"/>
+  <rosdep name="libqt4-opengl-dev"/>
+  <rosdep name="libqt4-dev"/>
+  <rosdep name="libglew-dev"/>
+  <rosdep name="libdevil-dev"/>
+  <rosdep name="libgsl"/>
+  <rosdep name="eigen"/>
+  <rosdep name="libg2o"/>
+  <rosdep name="octomap"/>
+  <export>
+    <rosdoc config="rosdoc.yaml" />
+    <nodelet plugin="${prefix}/nodelet_plugins.xml" />
+    <cpp cflags="-I${prefix}/srv_gen/cpp"/>
+ </export>
+ -->
