@@ -48,7 +48,8 @@ public:
         nearbyFrames = para.getData<int>("nearby_keyframes");
     
         loopAccuError = para.getData<double>("loop_accumulate_error");                
-        localAccuError = para.getData<double>("local_accumulate_error");                
+        localAccuError = para.getData<double>("local_accumulate_error");  
+        trajectory_file = para.getData<string>("trajectory_file");              
 
         posegraphThread = make_shared<std::thread> (
                     std::bind(&PoseGraph::mainLoop, this) );
@@ -129,7 +130,7 @@ public:
             fout<<"100 0 0 0 0 0 100 0 0 0 0 100 0 0 0 100 0 0 100 0 100"<<endl;
         }
         */
-        ofstream f("/home/ylin67/rgbdslam_catkin_ws/src/rgbd_slam_tutor2_sophus/data/trajectory.txt");
+        ofstream f(trajectory_file);
         for ( size_t i=0; i< keyframes.size(); i++ )
         {
             g2o::VertexSE3* v = dynamic_cast<g2o::VertexSE3*> (optimizer.vertices()[ keyframes[i]->id ]);
@@ -208,6 +209,7 @@ public:
     int     lastGraphSize                   =0;
     double  loopAccuError                   =1.0;
     double  localAccuError                  =1.0;
+    string  trajectory_file;
 
 };
 

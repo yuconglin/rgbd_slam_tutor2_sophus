@@ -16,7 +16,7 @@ RosWrapper::RosWrapper(const ParameterReader& para, shared_ptr<Tracker>& t, Pose
 
     //signalThread = make_shared<thread>(bind(&RosWrapper::SignalHandling, this));
     //subscriberThread = make_shared<thread>(bind(&RosWrapper::SubscriberRun, this));
-    consumerThread = make_shared<thread>(bind(&RosWrapper::ConsumerRun, this));
+    consumerThread = make_shared<thread>(bind(&RosWrapper::ConsumerRunSimple, this));
     signalThread = nullptr;
     subscriberThread = nullptr;
 
@@ -88,20 +88,20 @@ void RosWrapper::rgbCallback(const sensor_msgs::ImageConstPtr& msg)
 { 
     std::unique_lock<mutex> lck(rgb_mutex);
     //std::cout << "rgb updated \n";
-    rgb_queue.push(*msg);
-    //rgb_msg = *msg;
+    //rgb_queue.push(*msg);
+    rgb_msg = *msg;
     is_rgb_updated = true;
-    //rgb_updated.notify_all();
+    rgb_updated.notify_all();
 }
 
 void RosWrapper::depthCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     std::unique_lock<mutex> lck(depth_mutex);
     //std::cout << "depth updated \n";
-    depth_queue.push(*msg);
-    //depth_msg = *msg;
+    //depth_queue.push(*msg);
+    depth_msg = *msg;
     is_depth_updated = true;
-    //depth_updated.notify_all();
+    depth_updated.notify_all();
 }
 
 void RosWrapper::depthToCV8UC1(cv::Mat &depth_img, cv::Mat &mono8_img)

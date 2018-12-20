@@ -51,7 +51,10 @@ public:
             if (feature.position != cv::Point3f(0,0,0)){
                frame->features.push_back( feature );
             }
+            cv::circle(frame->rgb, kps[i].pt, 10, cv::Scalar(255,255,0));
         }
+        cv::imshow( "features", frame->rgb );
+        cv::waitKey(1);
     }
 
     // 匹配两个帧之间的特征描述
