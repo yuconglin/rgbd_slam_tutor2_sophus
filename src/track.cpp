@@ -45,6 +45,9 @@ void    Tracker::trackRefFrame()
     for (auto pFrame: refFrames)
     {
         vector<cv::DMatch> matches = orb->match( pFrame, currentFrame );
+        if (mmatches == 0) {
+            continue;
+        }
         vector<cv::DMatch>  validMatches;
         SE3d invPose = pFrame->getTransform().inverse();
         for (auto m:matches)
